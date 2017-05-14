@@ -107,7 +107,7 @@ function Tile(firstClient, tileIndex) {
         this.screenGapSizeBottom = KWin.readConfig("screenGapSizeBottom", 0);
         // Do this manually instead of calling "addClient" to not try to resize
         // because we don't have a rectangle at this point
-        firstClient.keepBelow = true;
+       // firstClient.keepBelow = true;
         if (KWin.readConfig("noBorder", false)) {
             firstClient.noBorder = true;
         }
@@ -317,7 +317,7 @@ Tile.prototype.onClientDesktopChanged = function(client) {
 
 Tile.prototype.onClientStartUserMovedResized = function(client) {
     // Let client stay above the other tilers so the user sees the move
-    client.keepBelow = false;
+   // client.keepBelow = false;
 };
 
 Tile.prototype.onClientStepUserMovedResized = function(client) {
@@ -350,7 +350,7 @@ Tile.prototype.onClientFinishUserMovedResized = function(client) {
             this.resizingEnded.emit();
         }
         // Put the client on the same layer as the other tilers again
-        client.keepBelow = true;
+      //  client.keepBelow = true;
     } catch(err) {
         print(err, "in Tile.onClientFinishUserMovedResized");
     }
@@ -367,7 +367,7 @@ Tile.prototype.removeClient = function(client) {
 Tile.prototype.addClient = function(client) {
     try {
         if (this.clients.indexOf(client) == -1) {
-            client.keepBelow = true;
+         //   client.keepBelow = true;
             if (KWin.readConfig("noBorder", false)) {
                 client.noBorder = true;
             }
